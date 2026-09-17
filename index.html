@@ -10,17 +10,40 @@
 <header>
 <img src="logo.png" class="logo" alt="Trần Công Đông Ăn Vặt">
 <h1>🍟 Trần Công Đông - Ăn Vặt</h1>
-<p>Đồ ăn vặt ngon - Đặt món nhanh</p>
+<p>Đồ ăn ngon - Giao hàng nhanh</p>
 </header>
-<nav><a href="#menu">Thực đơn</a> <a href="#cart">🛒 Giỏ hàng (<span id="count">0</span>)</a></nav>
-<section class="banner"><h2>Ăn ngon mỗi ngày</h2><p>Chọn món và đặt hàng ngay</p></section>
-<section id="menu"><h2>Danh mục món ăn</h2><div class="products">
+<nav>
+<a href="#menu">Thực đơn</a>
+<a href="#cart">🛒 Giỏ hàng (<span id="count">0</span>)</a>
+</nav>
+<section class="banner">
+<h2>Ăn vặt mỗi ngày</h2>
+<p>Đặt món nhanh trên điện thoại</p>
+</section>
+<section id="menu">
+<h2>Danh mục món ăn</h2>
+<div class="products">
 <div class="card"><img src="https://images.unsplash.com/photo-1562967914-608f82629710"><h3>Gà rán</h3><p>35.000đ</p><button onclick="add('Gà rán',35000)">Thêm</button></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1622445275576-721325763afe"><h3>Xúc xích</h3><p>20.000đ</p><button onclick="add('Xúc xích',20000)">Thêm</button></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e"><h3>Mì cay</h3><p>45.000đ</p><button onclick="add('Mì cay',45000)">Thêm</button></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1558857563-b371033873b8"><h3>Trà sữa</h3><p>25.000đ</p><button onclick="add('Trà sữa',25000)">Thêm</button></div>
-</div></section>
-<section id="cart"><h2>🛒 Giỏ hàng</h2><div id="cartList">Chưa có món</div><h3>Tổng: <span id="total">0</span>đ</h3><input id="name" placeholder="Họ tên"><input id="phone" placeholder="Số điện thoại"><input id="address" placeholder="Địa chỉ"><button onclick="order()">Đặt món</button></section>
+</div>
+</section>
+<section id="cart">
+<h2>🛒 Giỏ hàng</h2>
+<div id="cartList">Chưa có món</div>
+<h3>Tổng tiền: <span id="total">0</span>đ</h3>
+<input id="name" placeholder="Họ tên">
+<input id="phone" placeholder="Số điện thoại">
+<input id="address" placeholder="Địa chỉ giao hàng">
+<button onclick="order()">Đặt món</button>
+</section>
 <footer>© 2026 Trần Công Đông - Ăn Vặt</footer>
-<script>let cart=[];function add(n,p){cart.push({n,p});render()}function render(){count.innerHTML=cart.length;cartList.innerHTML=cart.map(x=>x.n+' - '+x.p.toLocaleString()+'đ').join('<br>')||'Chưa có món';total.innerHTML=cart.reduce((a,b)=>a+b.p,0).toLocaleString()}function order(){alert('Đã nhận đơn của '+name.value+'. Cửa hàng sẽ liên hệ xác nhận!')}</script>
-</body></html>
+<script>
+let cart=[];
+function add(n,p){cart.push({n,p});render()}
+function render(){count.innerHTML=cart.length;cartList.innerHTML=cart.map(x=>x.n+' - '+x.p.toLocaleString()+'đ').join('<br>')||'Chưa có món';total.innerHTML=cart.reduce((a,b)=>a+b.p,0).toLocaleString()}
+function order(){alert('Đã nhận đơn: '+name.value+' - '+phone.value)}
+</script>
+</body>
+</html>
