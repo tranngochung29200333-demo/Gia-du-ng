@@ -8,23 +8,38 @@
 </head>
 <body>
 <header>
-<h1>🍟 Trần Công Đông</h1>
-<p>Đồ ăn vặt ngon - Giao hàng nhanh</p>
+<h1>🍟 Trần Công Đông - Ăn Vặt</h1>
+<p>Đồ ăn vặt ngon - Đặt món nhanh</p>
 </header>
 <nav>
-<a href="#menu">Thực đơn</a><a href="#contact">Liên hệ</a>
+<a href="#menu">Thực đơn</a>
+<a href="#cart">Giỏ hàng (<span id="count">0</span>)</a>
 </nav>
-<section class="banner"><h2>Ăn vặt mỗi ngày - Niềm vui mỗi lúc</h2><p>Đặt món nhanh chóng trên điện thoại</p></section>
+<section class="banner"><h2>Ăn ngon mỗi ngày</h2><p>Chọn món và đặt hàng ngay</p></section>
+
 <section id="menu">
 <h2>Danh mục món ăn</h2>
 <div class="products">
-<div class="card">🍗 Gà rán<br><b>35.000đ</b></div>
-<div class="card">🌭 Xúc xích<br><b>20.000đ</b></div>
-<div class="card">🍜 Mì cay<br><b>45.000đ</b></div>
-<div class="card">🧋 Trà sữa<br><b>25.000đ</b></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1562967914-608f82629710"><h3>Gà rán</h3><p>35.000đ</p><button onclick="add('Gà rán',35000)">Thêm</button></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1622445275576-721325763afe"><h3>Xúc xích</h3><p>20.000đ</p><button onclick="add('Xúc xích',20000)">Thêm</button></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e"><h3>Mì cay</h3><p>45.000đ</p><button onclick="add('Mì cay',45000)">Thêm</button></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1558857563-b371033873b8"><h3>Trà sữa</h3><p>25.000đ</p><button onclick="add('Trà sữa',25000)">Thêm</button></div>
 </div>
 </section>
-<section id="contact"><h2>Đặt hàng</h2><p>☎ Hotline: 09xx xxx xxx</p><button>Đặt món ngay</button></section>
+
+<section id="cart">
+<h2>🛒 Giỏ hàng</h2>
+<div id="cartList">Chưa có món</div>
+<h3>Tổng: <span id="total">0</span>đ</h3>
+<button onclick="order()">Đặt món qua Zalo</button>
+</section>
+
 <footer>© 2026 Trần Công Đông - Ăn Vặt</footer>
+<script>
+let cart=[];
+function add(name,price){cart.push({name,price});render();}
+function render(){document.getElementById('count').innerHTML=cart.length;document.getElementById('cartList').innerHTML=cart.map(x=>x.name+' - '+x.price.toLocaleString()+'đ').join('<br>')||'Chưa có món';document.getElementById('total').innerHTML=cart.reduce((a,b)=>a+b.price,0).toLocaleString();}
+function order(){alert('Cảm ơn bạn! Vui lòng liên hệ cửa hàng để xác nhận đơn hàng.');}
+</script>
 </body>
 </html>
